@@ -2,19 +2,21 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import { Mail, MapPin, Github, Linkedin, Twitter, Send, CheckCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Github, Linkedin, Send, CheckCircle } from 'lucide-react'
+import { FaXTwitter } from 'react-icons/fa6'
 import AnimatedSection from '@/components/AnimatedSection'
 import { profile } from '@/data/profile'
 
 const contactInfo = [
   { icon: <Mail size={18} />, label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
+  { icon: <Phone size={18} />, label: 'Phone', value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}` },
   { icon: <MapPin size={18} />, label: 'Location', value: profile.location, href: '#' },
 ]
 
 const socialLinks = [
   { icon: <Github size={18} />, label: 'GitHub', href: profile.social.github },
   { icon: <Linkedin size={18} />, label: 'LinkedIn', href: profile.social.linkedin },
-  { icon: <Twitter size={18} />, label: 'Twitter', href: profile.social.twitter },
+  { icon: <FaXTwitter size={16} />, label: 'X (Twitter)', href: profile.social.twitter },
 ]
 
 export default function Contact() {
@@ -89,6 +91,7 @@ export default function Contact() {
                   <Link
                     key={s.label}
                     href={s.href}
+                    rel="noopener noreferrer"
                     target="_blank"
                     className="w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center text-zinc-500 hover:text-orange-400 hover:border-orange-500/40 transition-all"
                     aria-label={s.label}

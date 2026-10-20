@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import AnimatedSection from '@/components/AnimatedSection'
 import ProjectCard from '@/components/ProjectCard'
-import { projects } from '@/data/projects'
+import { projects, inCategory } from '@/data/projects'
 
 type Category = 'All' | 'Frontend' | 'Backend' | 'Fullstack' | 'Mobile'
 
@@ -12,7 +12,7 @@ const categories: Category[] = ['All', 'Fullstack', 'Frontend', 'Backend', 'Mobi
 export default function Portfolio() {
   const [active, setActive] = useState<Category>('All')
 
-  const filtered = active === 'All' ? projects : projects.filter((p) => p.category === active)
+  const filtered = active === 'All' ? projects : projects.filter((p) => inCategory(p, active))
 
   return (
     <div className="bg-[#080808] min-h-screen">
@@ -54,7 +54,7 @@ export default function Portfolio() {
                       active === cat ? 'bg-black/20' : 'bg-white/5'
                     }`}
                   >
-                    {cat === 'All' ? projects.length : projects.filter((p) => p.category === cat).length}
+                    {cat === 'All' ? projects.length : projects.filter((p) => inCategory(p, cat)).length}
                   </span>
                 </button>
               ))}

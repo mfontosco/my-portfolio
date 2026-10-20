@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Github, Linkedin, Twitter, ArrowRight, Code2, Server, Layers, ChevronDown } from 'lucide-react'
+import { Github, Linkedin, ArrowRight, Code2, Server, Layers, ChevronDown } from 'lucide-react'
+import { FaXTwitter } from 'react-icons/fa6'
 import AnimatedSection from '@/components/AnimatedSection'
 import Typewriter from '@/components/Typewriter'
 import ProjectCard from '@/components/ProjectCard'
@@ -35,7 +36,7 @@ const stats = [
   { value: profile.stats.years, label: 'Years Experience' },
   { value: profile.stats.projects, label: 'Projects Shipped' },
   { value: profile.stats.clients, label: 'Happy Clients' },
-  { value: profile.stats.commits, label: 'Git Commits' },
+  { value: profile.stats.contributions, label: 'GitHub Contributions / yr' },
 ]
 
 const floatingBadges = [
@@ -61,7 +62,7 @@ export default function Home() {
             {/* Left — Text */}
             <div className="lg:col-span-7 space-y-7">
               <AnimatedSection delay={0.1}>
-                <p className="section-label">Portfolio 2024</p>
+                <p className="section-label">Hi, I&apos;m</p>
                 <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black leading-[0.95] tracking-tight">
                   <span className="text-white">Mfon</span>
                   <br />
@@ -105,13 +106,15 @@ export default function Home() {
                   <span className="text-zinc-600 text-xs uppercase tracking-widest">Find me on</span>
                   <div className="flex gap-3">
                     {[
-                      { href: profile.social.github, icon: <Github size={16} /> },
-                      { href: profile.social.linkedin, icon: <Linkedin size={16} /> },
-                      { href: profile.social.twitter, icon: <Twitter size={16} /> },
+                      { href: profile.social.github, label: 'GitHub', icon: <Github size={16} /> },
+                      { href: profile.social.linkedin, label: 'LinkedIn', icon: <Linkedin size={16} /> },
+                      { href: profile.social.twitter, label: 'X (Twitter)', icon: <FaXTwitter size={14} /> },
                     ].map((s, i) => (
                       <Link
                         key={i}
                         href={s.href}
+                        aria-label={s.label}
+                        rel="noopener noreferrer"
                         target="_blank"
                         className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-orange-400 hover:border-orange-500/40 transition-all"
                       >

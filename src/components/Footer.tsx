@@ -1,5 +1,6 @@
 import Link from 'next/link'
-import { Github, Linkedin, Twitter } from 'lucide-react'
+import { Github, Linkedin } from 'lucide-react'
+import { FaXTwitter } from 'react-icons/fa6'
 import { profile } from '@/data/profile'
 
 export default function Footer() {
@@ -32,6 +33,8 @@ export default function Footer() {
             <Link
               href={profile.social.github}
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
               className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-orange-400 hover:border-orange-500/50 transition-all"
             >
               <Github size={15} />
@@ -39,6 +42,8 @@ export default function Footer() {
             <Link
               href={profile.social.linkedin}
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
               className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-orange-400 hover:border-orange-500/50 transition-all"
             >
               <Linkedin size={15} />
@@ -46,9 +51,11 @@ export default function Footer() {
             <Link
               href={profile.social.twitter}
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
               className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-zinc-500 hover:text-orange-400 hover:border-orange-500/50 transition-all"
             >
-              <Twitter size={15} />
+              <FaXTwitter size={13} />
             </Link>
           </div>
         </div>

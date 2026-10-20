@@ -1,5 +1,6 @@
 import { ExternalLink, Github } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Project } from '@/data/projects'
 
 export default function ProjectCard({ project }: { project: Project }) {
@@ -7,9 +8,23 @@ export default function ProjectCard({ project }: { project: Project }) {
     <div className="group bg-[#111111] border border-white/5 rounded-2xl overflow-hidden hover:border-orange-500/30 transition-all duration-400 hover:-translate-y-2 hover:shadow-[0_20px_60px_rgba(249,115,22,0.08)]">
       {/* Image / gradient area */}
       <div className={`h-48 ${project.gradient} relative overflow-hidden`}>
-        <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-6xl select-none">{project.emoji}</span>
-        </div>
+        {project.image ? (
+          <>
+            <Image
+              src={project.image}
+              alt={`${project.title} screenshot`}
+              fill
+              sizes="(min-width: 1024px) 368px, (min-width: 768px) 50vw, 100vw"
+              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Darken the top so the badges stay readable on light screenshots */}
+            <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/50 to-transparent" />
+          </>
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-6xl select-none">{project.emoji}</span>
+          </div>
+        )}
         {/* Shine on hover */}
         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700" />
         <div className="absolute top-3 left-3">
@@ -52,19 +67,23 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Link
             href={project.liveUrl}
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-1.5 text-orange-500 hover:text-orange-300 text-sm font-semibold transition-colors"
           >
             <ExternalLink size={13} />
-            Live Demo
+            {project.category === 'Mobile' ? 'View App' : 'Visit Site'}
           </Link>
-          <Link
-            href={project.githubUrl}
-            target="_blank"
-            className="flex items-center gap-1.5 text-zinc-500 hover:text-white text-sm font-medium transition-colors"
-          >
-            <Github size={13} />
-            Source
-          </Link>
+          {project.githubUrl && (
+            <Link
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-zinc-500 hover:text-white text-sm font-medium transition-colors"
+            >
+              <Github size={13} />
+              Source
+            </Link>
+          )}
         </div>
       </div>
     </div>

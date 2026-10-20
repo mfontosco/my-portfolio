@@ -3,17 +3,18 @@ export const profile = {
   firstName: 'Mfon',
   lastName: 'Paulinus',
   role: 'Fullstack Developer',
-  email: 'mfon@example.com',
+  email: 'mstrings11@gmail.com',
+  phone: '+234 814 376 4679',
   location: 'Nigeria',
   bio: "I'm a passionate fullstack developer who crafts elegant, high-performance web applications — from pixel-perfect frontends to scalable backend architectures.",
-  longBio: `With over 3 years of hands-on experience, I specialize in building modern, responsive applications that deliver exceptional user experiences. My journey started with a curiosity for how things work on the web and evolved into deep expertise across the entire stack.
+  longBio: `With over 4 years of hands-on experience, I specialize in building modern, responsive applications that deliver exceptional user experiences. My journey started with a curiosity for how things work on the web and evolved into deep expertise across the entire stack.
 
 I believe in writing clean, maintainable code and I'm passionate about performance optimization, accessibility, and developer experience. When I'm not coding, you'll find me exploring emerging technologies, contributing to open source, or mentoring aspiring developers.`,
   stats: {
-    years: '3+',
+    years: '4+',
     projects: '20+',
     clients: '15+',
-    commits: '500+',
+    contributions: '2,000+',
   },
   skills: {
     frontend: ['React', 'Next.js', 'TypeScript', 'TailwindCSS', 'Redux', 'HTML/CSS'],
@@ -44,8 +45,8 @@ I believe in writing clean, maintainable code and I'm passionate about performan
     },
   ],
   social: {
-    github: 'https://github.com',
-    linkedin: 'https://linkedin.com',
-    twitter: 'https://twitter.com',
+    github: 'https://github.com/mfontosco',
+    linkedin: 'https://www.linkedin.com/in/mfon-paulinus-21ab5a1b9/',
+    twitter: 'https://x.com/PaulinusMfon',
   },
 }

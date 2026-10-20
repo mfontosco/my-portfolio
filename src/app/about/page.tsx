@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, MapPin, Mail, Calendar } from 'lucide-react'
+import { ArrowRight, MapPin, Mail, Phone, Calendar } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import ProfilePhoto from '@/components/ProfilePhoto'
 import { profile } from '@/data/profile'
@@ -48,6 +48,10 @@ export default function About() {
                 <div className="flex items-center gap-3 text-zinc-400 text-sm">
                   <Mail size={14} className="text-orange-500 shrink-0" />
                   <span>{profile.email}</span>
+                </div>
+                <div className="flex items-center gap-3 text-zinc-400 text-sm">
+                  <Phone size={14} className="text-orange-500 shrink-0" />
+                  <span>{profile.phone}</span>
                 </div>
                 <div className="flex items-center gap-3 text-zinc-400 text-sm">
                   <Calendar size={14} className="text-orange-500 shrink-0" />
