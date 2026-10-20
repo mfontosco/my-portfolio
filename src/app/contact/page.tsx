@@ -13,6 +13,9 @@ const contactInfo = [
   { icon: <MapPin size={18} />, label: 'Location', value: profile.location, href: '#' },
 ]
 
+// Web3Forms access keys are meant to be public; submissions go to the email the key was issued for
+const WEB3FORMS_KEY = 'e990c431-cc44-4295-b6e6-565dbbbcacf6'
+
 const socialLinks = [
   { icon: <Github size={18} />, label: 'GitHub', href: profile.social.github },
   { icon: <Linkedin size={18} />, label: 'LinkedIn', href: profile.social.linkedin },
@@ -23,17 +26,40 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const botcheck = (e.currentTarget.elements.namedItem('botcheck') as HTMLInputElement).checked
     setLoading(true)
-    await new Promise((r) => setTimeout(r, 1200))
-    setLoading(false)
-    setSent(true)
+    setError('')
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          from_name: 'Portfolio Contact Form',
+          subject: `Portfolio: ${form.subject}`,
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          botcheck,
+        }),
+      })
+      const data = await res.json()
+      if (!data.success) throw new Error(data.message)
+      setSent(true)
+      setForm({ name: '', email: '', subject: '', message: '' })
+    } catch {
+      setError(`Sorry, your message couldn't be sent. Please try again or email me at ${profile.email}.`)
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -135,6 +161,8 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot: hidden from people, bots that tick it are rejected by Web3Forms */}
+                  <input type="checkbox" name="botcheck" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-1.5">
                       <label className="text-zinc-400 text-xs font-medium uppercase tracking-wide">
@@ -193,6 +221,12 @@ export default function Contact() {
                       className="w-full bg-[#0d0d0d] border border-white/8 rounded-xl px-4 py-3 text-white text-sm placeholder:text-zinc-600 focus:outline-none focus:border-orange-500/60 focus:bg-[#111] transition-all resize-none"
                     />
                   </div>
+
+                  {error && (
+                    <p role="alert" className="text-red-400 text-sm bg-red-500/10 border border-red-500/20 rounded-xl px-4 py-3">
+                      {error}
+                    </p>
+                  )}
 
                   <button
                     type="submit"
