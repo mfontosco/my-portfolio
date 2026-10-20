@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Github, Linkedin, ArrowRight, Code2, Server, Layers, ChevronDown } from 'lucide-react'
+import { Github, Linkedin, ArrowRight, Code2, Server, Layers, ChevronDown, Download } from 'lucide-react'
 import { FaXTwitter } from 'react-icons/fa6'
 import AnimatedSection from '@/components/AnimatedSection'
 import Typewriter from '@/components/Typewriter'
@@ -81,6 +81,12 @@ export default function Home() {
                 <p className="text-zinc-400 text-lg max-w-xl leading-relaxed">
                   {profile.bio}
                 </p>
+                <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-zinc-400">
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-green-500/25 bg-green-500/10 text-green-400 font-medium">
+                    <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+                    {profile.availability}
+                  </span>
+                </div>
               </AnimatedSection>
 
               <AnimatedSection delay={0.4}>
@@ -92,9 +98,17 @@ export default function Home() {
                     View My Work
                     <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
+                  <a
+                    href={profile.cvUrl}
+                    download
+                    className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/15 text-white font-medium rounded-full hover:border-orange-500/50 hover:text-orange-400 transition-all text-sm"
+                  >
+                    <Download size={15} />
+                    Download CV
+                  </a>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center gap-2 px-8 py-3.5 border border-white/15 text-white font-medium rounded-full hover:border-orange-500/50 hover:text-orange-400 transition-all text-sm"
+                    className="inline-flex items-center gap-2 px-6 py-3.5 text-zinc-400 font-medium rounded-full hover:text-orange-400 transition-colors text-sm"
                   >
                     Get in Touch
                   </Link>

@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowRight, MapPin, Mail, Phone, Calendar } from 'lucide-react'
+import { ArrowRight, MapPin, Mail, Phone, Download } from 'lucide-react'
 import AnimatedSection from '@/components/AnimatedSection'
 import ProfilePhoto from '@/components/ProfilePhoto'
 import { profile } from '@/data/profile'
@@ -53,13 +53,9 @@ export default function About() {
                   <Phone size={14} className="text-orange-500 shrink-0" />
                   <span>{profile.phone}</span>
                 </div>
-                <div className="flex items-center gap-3 text-zinc-400 text-sm">
-                  <Calendar size={14} className="text-orange-500 shrink-0" />
-                  <span>Available for new projects</span>
-                </div>
                 <div className="flex items-center gap-2 pt-1">
                   <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <span className="text-green-400 text-xs font-medium">Open to Work</span>
+                  <span className="text-green-400 text-xs font-medium">{profile.availability}</span>
                 </div>
               </div>
             </div>
@@ -93,7 +89,7 @@ export default function About() {
               </div>
             </AnimatedSection>
 
-            <AnimatedSection delay={0.3}>
+            <AnimatedSection delay={0.3} className="flex flex-wrap gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center gap-2 px-7 py-3 bg-orange-500 text-black font-bold rounded-full hover:bg-orange-400 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)] transition-all text-sm"
@@ -101,6 +97,14 @@ export default function About() {
                 Let's Work Together
                 <ArrowRight size={14} />
               </Link>
+              <a
+                href={profile.cvUrl}
+                download
+                className="inline-flex items-center gap-2 px-7 py-3 border border-white/15 text-white font-medium rounded-full hover:border-orange-500/50 hover:text-orange-400 transition-all text-sm"
+              >
+                <Download size={14} />
+                Download CV
+              </a>
             </AnimatedSection>
           </div>
         </div>

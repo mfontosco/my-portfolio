@@ -7,14 +7,17 @@ export interface Project {
   image?: string
   tags: string[]
   category: 'Frontend' | 'Backend' | 'Fullstack' | 'Mobile'
+  // Shown with the phone-style screenshot and counted under Mobile, whatever its category
+  mobileApp?: boolean
   liveUrl: string
   githubUrl?: string
   featured: boolean
 }
 
-// Fullstack projects also count as Frontend and Backend work
+// Fullstack projects also count as Frontend and Backend work; mobile apps also count as Mobile
 export function inCategory(project: Project, category: Project['category']) {
   if (project.category === category) return true
+  if (category === 'Mobile') return !!project.mobileApp
   return project.category === 'Fullstack' && (category === 'Frontend' || category === 'Backend')
 }
 
@@ -65,6 +68,7 @@ export const projects: Project[] = [
       'A complete benefit administration platform covering the full cycle: enumerating candidates, verifying their data, disbursing benefits and recovering funds where necessary.',
     gradient: 'bg-gradient-to-br from-purple-900/60 to-zinc-950',
     emoji: '📋',
+    image: '/plax.png',
     tags: [],
     category: 'Fullstack',
     liveUrl: 'https://plax.ng',
@@ -74,11 +78,13 @@ export const projects: Project[] = [
     id: 6,
     title: 'FaasPay by WallX',
     description:
-      'An encrypted payments app for African business owners, merchants, families and friends to send, receive and accept payments from anywhere in 30 seconds or less.',
+      'Cross-border payments app. I built the Node.js payment APIs and FiatMatch wallet and KYC integration, cut API response times 35%, and worked on the admin frontend.',
     gradient: 'bg-gradient-to-br from-emerald-900/60 to-zinc-950',
     emoji: '💳',
-    tags: ['iOS', 'Fintech'],
-    category: 'Mobile',
+    image: '/faaspay.png',
+    tags: ['Node.js', 'Express', 'MongoDB', 'FiatMatch', 'Fintech'],
+    category: 'Fullstack',
+    mobileApp: true,
     liveUrl: 'https://apps.apple.com/us/app/faaspay-by-wallx/id6590625075',
     featured: false,
   },

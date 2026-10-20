@@ -135,7 +135,7 @@ export default function Contact() {
                 <span className="text-green-400 text-sm font-medium">Available for Work</span>
               </div>
               <p className="text-zinc-500 text-xs leading-relaxed">
-                Currently open to freelance projects and full-time roles. Typical response time: within 24 hours.
+                Open to remote full-time roles and freelance projects. Typical response time: within 24 hours.
               </p>
             </div>
           </AnimatedSection>

@@ -15,7 +15,9 @@ export default function ProjectCard({ project }: { project: Project }) {
               alt={`${project.title} screenshot`}
               fill
               sizes="(min-width: 1024px) 368px, (min-width: 768px) 50vw, 100vw"
-              className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+              className={`transition-transform duration-700 group-hover:scale-105 ${
+                project.mobileApp ? 'object-contain py-3' : 'object-cover object-top'
+              }`}
             />
             {/* Darken the top so the badges stay readable on light screenshots */}
             <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-black/50 to-transparent" />
@@ -71,7 +73,7 @@ export default function ProjectCard({ project }: { project: Project }) {
             className="flex items-center gap-1.5 text-orange-500 hover:text-orange-300 text-sm font-semibold transition-colors"
           >
             <ExternalLink size={13} />
-            {project.category === 'Mobile' ? 'View App' : 'Visit Site'}
+            {project.mobileApp ? 'View App' : 'Visit Site'}
           </Link>
           {project.githubUrl && (
             <Link

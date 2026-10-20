@@ -6,12 +6,14 @@ export const profile = {
   email: 'mstrings11@gmail.com',
   phone: '+234 814 376 4679',
   location: 'Nigeria',
+  availability: 'Open to remote roles',
+  cvUrl: '/Paulinus_Mfon_Fullstack_Developer_CV.pdf',
   bio: "I'm a passionate fullstack developer who crafts elegant, high-performance web applications — from pixel-perfect frontends to scalable backend architectures.",
-  longBio: `With over 4 years of hands-on experience, I specialize in building modern, responsive applications that deliver exceptional user experiences. My journey started with a curiosity for how things work on the web and evolved into deep expertise across the entire stack.
+  longBio: `With over 6 years of hands-on experience, I specialize in building modern, responsive applications that deliver exceptional user experiences. My journey started with a curiosity for how things work on the web and evolved into deep expertise across the entire stack.
 
 I believe in writing clean, maintainable code and I'm passionate about performance optimization, accessibility, and developer experience. When I'm not coding, you'll find me exploring emerging technologies, contributing to open source, or mentoring aspiring developers.`,
   stats: {
-    years: '4+',
+    years: '6+',
     projects: '20+',
     clients: '15+',
     contributions: '2,000+',
