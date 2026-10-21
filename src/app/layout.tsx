@@ -6,8 +6,8 @@ import Footer from '@/components/Footer'
 export const metadata: Metadata = {
   title: 'Mfon Paulinus – Fullstack Developer',
   description:
-    'Fullstack developer crafting exceptional digital experiences from pixel-perfect frontends to scalable backend architectures.',
-  keywords: ['Fullstack Developer', 'React', 'Next.js', 'Node.js', 'Mfon Paulinus'],
+    'Fullstack developer (React, Next.js, Node.js, TypeScript) building fintech, ecommerce and education products. Available for remote roles.',
+  keywords: ['Fullstack Developer', 'Remote', 'React', 'Next.js', 'Node.js', 'NestJS', 'TypeScript', 'Fintech', 'Mfon Paulinus'],
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

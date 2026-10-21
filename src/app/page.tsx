@@ -13,31 +13,26 @@ const services = [
     icon: <Code2 size={26} />,
     title: 'Frontend Development',
     description:
-      'Pixel-perfect, responsive UIs built with React and Next.js. Performance-optimized, accessible, and delightful to use.',
+      'Responsive, fast interfaces in React and Next.js, from customer storefronts to admin and vendor dashboards.',
     tags: ['React', 'Next.js', 'TypeScript', 'TailwindCSS'],
   },
   {
     icon: <Server size={26} />,
     title: 'Backend Development',
     description:
-      'Scalable APIs and server-side architecture. RESTful services, real-time systems, and robust data management.',
-    tags: ['Node.js', 'PostgreSQL', 'MongoDB', 'Redis'],
+      'REST APIs in Node.js, Express and NestJS with auth, role-based access and well-indexed PostgreSQL and MongoDB data.',
+    tags: ['Node.js', 'NestJS', 'PostgreSQL', 'MongoDB'],
   },
   {
     icon: <Layers size={26} />,
-    title: 'Fullstack Solutions',
+    title: 'Payments & Fullstack Delivery',
     description:
-      'End-to-end product development from database schema to polished UI — shipping complete, production-ready apps.',
-    tags: ['System Design', 'DevOps', 'Docker', 'AWS'],
+      'End-to-end products with payment flows that hold up in production: gateway integration, webhook verification and reconciliation.',
+    tags: ['Paystack', 'Stripe', 'Flutterwave', 'Docker'],
   },
 ]
 
-const stats = [
-  { value: profile.stats.years, label: 'Years Experience' },
-  { value: profile.stats.projects, label: 'Projects Shipped' },
-  { value: profile.stats.clients, label: 'Happy Clients' },
-  { value: profile.stats.contributions, label: 'GitHub Contributions / yr' },
-]
+const stats = profile.stats
 
 const floatingBadges = [
   { label: 'React', pos: 'top-0 -left-6', delay: 'animate-float' },

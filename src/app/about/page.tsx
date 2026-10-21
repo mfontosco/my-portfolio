@@ -6,8 +6,8 @@ import { profile } from '@/data/profile'
 
 const skillCategories = [
   { label: 'Frontend', skills: profile.skills.frontend, color: 'from-orange-500/20 to-orange-600/5' },
-  { label: 'Backend', skills: profile.skills.backend, color: 'from-blue-500/20 to-blue-600/5' },
-  { label: 'Tools & DevOps', skills: profile.skills.tools, color: 'from-green-500/20 to-green-600/5' },
+  { label: 'Backend & Databases', skills: profile.skills.backend, color: 'from-blue-500/20 to-blue-600/5' },
+  { label: 'Integrations & DevOps', skills: profile.skills.tools, color: 'from-green-500/20 to-green-600/5' },
 ]
 
 export default function About() {
@@ -66,7 +66,7 @@ export default function About() {
             <AnimatedSection delay={0.1}>
               <h2 className="text-3xl font-black text-white mb-6">
                 Fullstack Developer &<br />
-                <span className="text-orange-500">Digital Craftsman</span>
+                <span className="text-orange-500">Payments & Product Builder</span>
               </h2>
               {profile.longBio.split('\n\n').map((para, i) => (
                 <p key={i} className="text-zinc-400 leading-relaxed mb-4">
@@ -77,13 +77,13 @@ export default function About() {
 
             <AnimatedSection delay={0.2}>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                {Object.entries(profile.stats).map(([key, val]) => (
+                {profile.stats.map((stat) => (
                   <div
-                    key={key}
+                    key={stat.label}
                     className="bg-[#111] border border-white/5 rounded-2xl p-4 text-center hover:border-orange-500/20 transition-colors"
                   >
-                    <p className="text-2xl font-black text-orange-500">{val}</p>
-                    <p className="text-zinc-500 text-xs mt-1 capitalize">{key.replace(/([A-Z])/g, ' $1')}</p>
+                    <p className="text-2xl font-black text-orange-500">{stat.value}</p>
+                    <p className="text-zinc-500 text-xs mt-1">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -181,7 +181,14 @@ export default function About() {
                           {exp.period}
                         </span>
                       </div>
-                      <p className="text-zinc-500 text-sm leading-relaxed">{exp.description}</p>
+                      <ul className="space-y-2">
+                        {exp.highlights.map((item) => (
+                          <li key={item} className="flex gap-2 text-zinc-500 text-sm leading-relaxed">
+                            <span className="mt-2 w-1 h-1 rounded-full bg-orange-500 shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   </div>
                 </AnimatedSection>
